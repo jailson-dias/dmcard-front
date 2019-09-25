@@ -1,6 +1,6 @@
 <template>
   <v-text-field
-    v-model="test"
+    v-model="text"
     :label="label"
     outlined
     flat

@@ -5,7 +5,12 @@
         <Carousel />
       </v-col>
       <v-col :cols="4">
-        <FormRequestCard />
+        <FormInput
+          title="Solicite o seu cartão aqui."
+          subtitle="Para começar precisamos de algumas informações suas."
+          :inputs="inputs"
+          :button="button"
+        />
       </v-col>
     </v-row>
   </v-container>
@@ -13,12 +18,33 @@
 
 <script>
 import Carousel from "../components/Carousel";
-import FormRequestCard from "../components/FormRequestCard";
+import FormInput from "../components/FormInput";
 export default {
   name: "RequestCreditCard",
   components: {
     Carousel,
-    FormRequestCard
+    FormInput
+  },
+  data() {
+    return {
+      inputs: [
+        {
+          label: "Nome"
+        },
+        {
+          label: "CPF"
+        },
+        {
+          label: "E-mail"
+        },
+        {
+          label: "Celular"
+        }
+      ],
+      button: {
+        text: "Solicitar Cartão"
+      }
+    };
   }
 };
 </script>

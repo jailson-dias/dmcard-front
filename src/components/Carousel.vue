@@ -28,10 +28,7 @@ export default {
           src: "https://cdn.vuetifyjs.com/images/carousel/planet.jpg"
         }
       ],
-      windowSize: {
-        x: 0,
-        y: 0
-      }
+      windowSize: 0
     };
   },
   mounted() {
