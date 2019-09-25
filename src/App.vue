@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <v-app>
     <router-view />
-  </div>
+  </v-app>
 </template>
 
 <script>
@@ -13,3 +13,11 @@ export default {
   })
 };
 </script>
+
+<style>
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+</style>
