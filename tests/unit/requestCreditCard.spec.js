@@ -1,5 +1,5 @@
 import { shallowMount, createLocalVue } from "@vue/test-utils";
-import RequestCard from "@/views/RequestCard.vue";
+import RequestCreditCard from "@/views/RequestCreditCard.vue";
 import Carousel from "@/components/Carousel.vue";
 import FormRequestCard from "@/components/FormRequestCard.vue";
 import Router from "vue-router";
@@ -9,7 +9,7 @@ localVue.use(Router);
 
 describe("App page", () => {
   const build = () => {
-    const wrapper = shallowMount(RequestCard, { localVue });
+    const wrapper = shallowMount(RequestCreditCard, { localVue });
 
     return {
       wrapper,

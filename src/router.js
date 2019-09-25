@@ -1,6 +1,6 @@
 import Vue from "vue";
 import Router from "vue-router";
-import RequestCard from "./views/RequestCard.vue";
+import RequestCreditCard from "./views/RequestCreditCard.vue";
 
 Vue.use(Router);
 
@@ -10,8 +10,8 @@ export default new Router({
   routes: [
     {
       path: "/",
-      name: "request_card",
-      component: RequestCard
+      name: "request_credit_card",
+      component: RequestCreditCard
     }
     // {
     //   path: "/about",
