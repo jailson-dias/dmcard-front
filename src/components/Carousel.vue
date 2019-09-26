@@ -1,7 +1,7 @@
 <template>
   <v-carousel
     :show-arrows="false"
-    :height="windowSize"
+    :height="height"
     cycle
     hide-delimiter-background
     :interval="3000"
@@ -28,7 +28,7 @@ export default {
           src: "https://cdn.vuetifyjs.com/images/carousel/planet.jpg"
         }
       ],
-      windowSize: 0
+      height: 0
     };
   },
   mounted() {
@@ -37,7 +37,7 @@ export default {
 
   methods: {
     onResize() {
-      this.windowSize = window.innerHeight;
+      this.height = window.innerHeight;
     }
   }
 };

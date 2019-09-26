@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container class="pa-0 mx-0">
     <v-row no-gutters>
       <v-col :cols="8">
         <Carousel />
@@ -44,11 +44,6 @@ export default {
 </script>
 
 <style scoped>
-.container {
-  padding: 0 !important;
-  margin-right: 0 !important;
-  margin-left: 0 !important;
-}
 .logo-dmcard {
   height: 70px;
   width: 70px;

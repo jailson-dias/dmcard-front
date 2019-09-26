@@ -1,8 +1,10 @@
 <template>
-  <div>
-    <Menu />
-    <CreditRequests />
-  </div>
+  <v-container class="pa-0 mx-0">
+    <div class="d-flex">
+      <Menu />
+      <CreditRequests />
+    </div>
+  </v-container>
 </template>
 
 <script>
@@ -16,3 +18,6 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+</style>
