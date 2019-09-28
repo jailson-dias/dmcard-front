@@ -4,6 +4,7 @@ export default {
     token: "",
     username: "admin"
   },
+  // utilizados na dashboard
   requestCreditCardScreenTitle: "Todas as solicitações",
   requestCreditCard: [
     {
@@ -14,6 +15,7 @@ export default {
       income: ""
     }
   ],
+  // utilizado na tela de fazer requisição
   currentRequest: {
     name: "",
     cpf: "",

@@ -20,6 +20,7 @@ import { VMoney } from "v-money";
 export default {
   directives: {
     mask: function(el, binding) {
+      // Utilizado para poder escolher estre a máscara de tamanho pré definido ou de dinheiro
       const [type, maskValue] = binding.value;
       binding.value = maskValue;
 
@@ -45,15 +46,7 @@ export default {
   },
   data() {
     return {
-      text: this.defaultValue || "",
-      teste: {
-        F: {
-          pattern: /[a-fA-F]/,
-          transform: v => v.toLocaleUpperCase()
-        }
-      },
-      directive: "v-mask",
-      value: "####"
+      text: this.defaultValue || ""
     };
   }
 };

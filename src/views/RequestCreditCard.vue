@@ -14,7 +14,6 @@
       </v-col>
     </v-row>
 
-    <!-- title="Resultado da análise de crédito" -->
     <RequestCreditCardDialog
       :title="modal.title"
       :text="modal.text"
@@ -22,18 +21,6 @@
       :requestCreditCard="requestCreditCardData"
       @set="hideModal"
     />
-    <!-- <RequestCreditCardDialog
-      title="Crédito recusado"
-      text="No momento não conseguimos conceder crédito para você"
-      :dialog="refused"
-      @set="setRefused"
-    />
-    <RequestCreditCardDialog
-      title="CPF já utilizado"
-      text="Já foi solicitado uma análise de créito para este CPF, consulte a área administrativa para mais detalhes sobre o status da análise de crédito para este CPF"
-      :dialog="error"
-      @set="setError"
-    />-->
   </v-container>
 </template>
 

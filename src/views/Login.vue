@@ -5,7 +5,7 @@
         <Carousel />
       </v-col>
       <v-col :cols="4" class="d-flex flex-column align-center">
-        <img src="@/assets/logo.png" alt="logo" class="logo-dmcard" />
+        <img src="@/assets/nav-dmcard.png" alt="logo" class="logo-dmcard" />
         <FormInput
           subtitle="Usuário: admin, senha: admin"
           subtitleSize="15"
@@ -13,6 +13,12 @@
           :button="button"
         />
       </v-col>
+      <RequestCreditCardDialog
+        title="Acesso negado"
+        text="Usuário e/ou senha incorretos"
+        :dialog="modal"
+        @set="hideModal"
+      />
     </v-row>
   </v-container>
 </template>
@@ -20,6 +26,7 @@
 <script>
 import Carousel from "../components/Carousel";
 import FormInput from "../components/FormInput";
+import RequestCreditCardDialog from "../components/RequestCreditCardDialog";
 
 import { mapState, mapActions } from "vuex";
 
@@ -30,10 +37,12 @@ const user = {
 export default {
   components: {
     Carousel,
-    FormInput
+    FormInput,
+    RequestCreditCardDialog
   },
   data() {
     return {
+      modal: false,
       user,
       inputs: [
         {
@@ -71,7 +80,12 @@ export default {
       this.user.password = value;
     },
     submit() {
-      this.login({ router: this.$router, ...this.user });
+      this.login({ router: this.$router, ...this.user }).catch(err => {
+        this.modal = true;
+      });
+    },
+    hideModal() {
+      this.modal = false;
     }
   }
 };

@@ -15,6 +15,7 @@ export default {
     state.requestCreditCardScreenTitle = requestCreditCardScreenTitle;
   },
   removeRequestCreditCard(state, request) {
+    // Remove a solicitação da lista local, sem precisar fazer requisição ao back para atualizar a lista de solicitações
     state.requestCreditCard = state.requestCreditCard.filter(
       r => r.cpf != request.cpf
     );

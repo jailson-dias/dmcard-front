@@ -1,8 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`App page É uma página do vue 1`] = `
-<div>
-  <carousel-stub></carousel-stub>
-  <formlogin-stub></formlogin-stub>
-</div>
+exports[`Login page É uma página do vue 1`] = `
+<v-container-stub tag="div" class="pa-0 mx-0">
+  <v-row-stub tag="div" nogutters="true">
+    <v-col-stub cols="8" tag="div">
+      <carousel-stub></carousel-stub>
+    </v-col-stub>
+    <v-col-stub cols="4" tag="div" class="d-flex flex-column align-center"><img src="@/assets/nav-dmcard.png" alt="logo" class="logo-dmcard">
+      <forminput-stub subtitle="Usuário: admin, senha: admin" subtitlesize="15" inputs="[object Object],[object Object]" button="[object Object]"></forminput-stub>
+    </v-col-stub>
+  </v-row-stub>
+</v-container-stub>
 `;
