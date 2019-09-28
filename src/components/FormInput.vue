@@ -6,17 +6,22 @@
         :style="{fontSize: titleSize + 'px'}"
       >{{title}}</h2>
       <p class="text-justify" :style="{fontSize: subtitleSize + 'px'}">{{subtitle}}</p>
-      <Input
-        v-for="(input, i) in inputs"
-        :label="input.label"
-        :key="'label' + i"
-        @input="event => input.set(event)"
-        :rules="input.rules"
-        :mask="input.mask"
-        :money="input.money"
-        :prefix="input.prefix"
-      />
-      <Button :text="button.text" @click.native="button.submit" />
+
+      <v-form v-model="valid" ref="form">
+        <Input
+          v-for="(input, i) in inputs"
+          :label="input.label"
+          :key="'label' + i"
+          @input="event => input.set(event)"
+          :rules="input.rules"
+          :mask="input.mask"
+          :money="input.money"
+          :prefix="input.prefix"
+          :type="input.type"
+          :defaultValue="input.defaultValue"
+        />
+        <Button :text="button.text" @click.native="button.submit(valid)" />
+      </v-form>
     </div>
   </div>
 </template>
@@ -55,17 +60,13 @@ export default {
   },
   data() {
     return {
+      valid: false,
       windowSize: 100
     };
   },
   components: {
     Input,
     Button
-  },
-  methods: {
-    inputSaida(asd) {
-      console.log(asd);
-    }
   }
 };
 </script>

@@ -20,6 +20,13 @@
 <script>
 import Carousel from "../components/Carousel";
 import FormInput from "../components/FormInput";
+
+import { mapState, mapActions } from "vuex";
+
+const user = {
+  username: "admin",
+  password: "admin"
+};
 export default {
   components: {
     Carousel,
@@ -27,18 +34,45 @@ export default {
   },
   data() {
     return {
+      user,
       inputs: [
         {
-          label: "Usuário"
+          label: "Usuário",
+          set: this.setUsername,
+          defaultValue: user.username
         },
         {
-          label: "Senha"
+          label: "Senha",
+          type: "password",
+          defaultValue: user.password,
+          set: this.setPassword
         }
       ],
       button: {
-        text: "Entrar"
+        text: "Entrar",
+        submit: this.submit
       }
     };
+  },
+  computed: {
+    ...mapState({
+      username: state => state.user.username
+    })
+  },
+  created() {
+    this.reAuthenticateUser({ router: this.$router, isLogin: true });
+  },
+  methods: {
+    ...mapActions(["login", "reAuthenticateUser"]),
+    setUsername(value) {
+      this.user.username = value;
+    },
+    setPassword(value) {
+      this.user.password = value;
+    },
+    submit() {
+      this.login({ router: this.$router, ...this.user });
+    }
   }
 };
 </script>

@@ -9,6 +9,7 @@
     :rules="rules"
     color="#222222"
     :prefix="prefix"
+    :type="type"
     @input="(event) => this.$emit('input', event)"
   ></v-text-field>
 </template>
@@ -35,11 +36,16 @@ export default {
     rules: Array,
     mask: String,
     money: Object,
-    prefix: String
+    prefix: String,
+    defaultValue: String,
+    type: {
+      type: String,
+      default: "text"
+    }
   },
   data() {
     return {
-      text: "",
+      text: this.defaultValue || "",
       teste: {
         F: {
           pattern: /[a-fA-F]/,

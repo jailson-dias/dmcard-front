@@ -14,13 +14,15 @@
       </v-col>
     </v-row>
 
+    <!-- title="Resultado da análise de crédito" -->
     <RequestCreditCardDialog
-      title="Resultado da análise de crédito"
-      :dialog="accepted"
+      :title="modal.title"
+      :text="modal.text"
+      :dialog="modal.show"
       :requestCreditCard="requestCreditCardData"
-      @set="setAccepted"
+      @set="hideModal"
     />
-    <RequestCreditCardDialog
+    <!-- <RequestCreditCardDialog
       title="Crédito recusado"
       text="No momento não conseguimos conceder crédito para você"
       :dialog="refused"
@@ -31,7 +33,7 @@
       text="Já foi solicitado uma análise de créito para este CPF, consulte a área administrativa para mais detalhes sobre o status da análise de crédito para este CPF"
       :dialog="error"
       @set="setError"
-    />
+    />-->
   </v-container>
 </template>
 
@@ -60,12 +62,14 @@ export default {
       email: value => {
         const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         return pattern.test(value) || "";
-      }
+      },
+      income: value => value.length > 4 || ""
     };
     return {
-      accepted: false,
-      refused: false,
-      error: false,
+      valid: false,
+      modal: {
+        show: false
+      },
       requestCreditCardData: [],
       creditRequest: {
         name: "",
@@ -106,7 +110,7 @@ export default {
             thousands: ".",
             precision: 2
           },
-          rules: [rules.required]
+          rules: [rules.required, rules.income]
         }
       ],
       button: {
@@ -133,7 +137,11 @@ export default {
     setIncome(value) {
       this.creditRequest.income = value;
     },
-    submit() {
+    submit(valid) {
+      if (!valid) {
+        this.showNotFilled();
+        return;
+      }
       let income = this.creditRequest.income.replace(/[\.]/g, "");
       this.createRequestCreditCard({
         name: this.creditRequest.name,
@@ -177,23 +185,50 @@ export default {
                 value: formatMoney(result.credit, money)
               }
             ];
-            this.setAccepted(true);
+            this.showAccepted();
           } else {
-            this.setRefused(true);
+            this.showRefused();
           }
         })
         .catch(err => {
-          this.setError(true);
+          this.showError(err.message);
         });
     },
-    setAccepted(state) {
-      this.accepted = state;
+    hideModal() {
+      this.modal = {
+        show: false
+      };
     },
-    setRefused(state) {
-      this.refused = state;
+    showAccepted() {
+      this.modal = {
+        show: true,
+        title: "Resultado da análise de crédito"
+      };
     },
-    setError(state) {
-      this.error = state;
+    showRefused() {
+      this.requestCreditCardData = undefined;
+      this.modal = {
+        show: true,
+        title: "Crédito recusado",
+        text: "No momento não conseguimos conceder crédito para você"
+      };
+    },
+    showError(message) {
+      this.requestCreditCardData = undefined;
+      this.modal = {
+        show: true,
+        title: "CPF já utilizado",
+        text:
+          "Já foi solicitado uma análise de créito para este CPF, consulte a área administrativa para mais detalhes sobre o status da análise de crédito para este CPF"
+      };
+    },
+    showNotFilled() {
+      this.requestCreditCardData = undefined;
+      this.modal = {
+        show: true,
+        title: "Dados incorretos",
+        text: "Preencha todos os dados corretamente"
+      };
     }
   }
 };

@@ -4,6 +4,7 @@ export default {
     token: "",
     username: "admin"
   },
+  requestCreditCardScreenTitle: "Todas as solicitações",
   requestCreditCard: [
     {
       name: "",

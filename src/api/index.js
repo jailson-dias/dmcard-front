@@ -1,6 +1,12 @@
 import axios from "axios";
 import { register, login } from "./user";
-import { create, list, deleteRequests } from "./requestCreditCard";
+import {
+  create,
+  listAll,
+  listAccepted,
+  listRefused,
+  deleteRequests
+} from "./requestCreditCard";
 
 const instance = axios.create({
   baseURL: "http://localhost:4000"
@@ -18,7 +24,9 @@ export default {
   },
   requestCreditCard: {
     create: params => create(instance, params),
-    list: params => list(instance, params),
+    listAll: params => listAll(instance, params),
+    listAccepted: params => listAccepted(instance, params),
+    listRefused: params => listRefused(instance, params),
     delete: params => deleteRequests(instance, params)
   }
 };

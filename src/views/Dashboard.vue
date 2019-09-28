@@ -11,10 +11,18 @@
 import Menu from "../components/Menu";
 import CreditRequests from "../components/CreditRequests";
 
+import { mapState, mapActions } from "vuex";
+
 export default {
   components: {
     Menu,
     CreditRequests
+  },
+  created() {
+    this.reAuthenticateUser({ router: this.$router, isDashboard: true });
+  },
+  methods: {
+    ...mapActions(["reAuthenticateUser"])
   }
 };
 </script>

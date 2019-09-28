@@ -1,6 +1,6 @@
 <template>
   <div class="d-flex justify-center mt-2 mb-5">
-    <v-btn color="#023d86" large>
+    <v-btn color="#023d86" large :disabled="disabled">
       <p class="button-text">{{text}}</p>
     </v-btn>
   </div>
@@ -9,7 +9,8 @@
 <script>
 export default {
   props: {
-    text: String
+    text: String,
+    disabled: Boolean
   }
 };
 </script>
