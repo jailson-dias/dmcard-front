@@ -1,34 +1,35 @@
-# dmcard-front
+# Frontend DMCard
 
-## Project setup
+## Descrição do projeto
+
+O frontend do desafio de código da DMCard tem 3 telas, uma para fazer solicitações de cartão de crédito, uma para login na área administrativa e a última é a dashboard, onde fica listado todas as solicitações de cartão de crédito.
+
+1. Página de solicitação de cartão de crédito: `<host>/`
+2. Página de login para a área administrativa: `<host>/login`
+3. Dashboard com todas as solicitações realizadas, apenas solicitações aceitas ou apenas solicitações recusadas: `<host>/dashboard`
+
+## Executar o projeto
+
+1. Intalar as dependências
+
 ```
 yarn install
 ```
 
-### Compiles and hot-reloads for development
+2. Executar como desenvolvedor
+
 ```
 yarn run serve
 ```
 
-### Compiles and minifies for production
+3. Gerar os arquivos para o projeto em produção
+
 ```
 yarn run build
 ```
 
-### Run your tests
-```
-yarn run test
-```
+4. Executar os testes unitários
 
-### Lints and fixes files
-```
-yarn run lint
-```
-
-### Run your unit tests
 ```
 yarn run test:unit
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
