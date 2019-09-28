@@ -1,5 +1,5 @@
 <template>
-  <div class="d-flex justify-center">
+  <div class="d-flex justify-center mt-2 mb-5">
     <v-btn color="#023d86" large>
       <p class="button-text">{{text}}</p>
     </v-btn>

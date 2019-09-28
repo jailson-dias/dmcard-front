@@ -6,8 +6,17 @@
         :style="{fontSize: titleSize + 'px'}"
       >{{title}}</h2>
       <p class="text-justify" :style="{fontSize: subtitleSize + 'px'}">{{subtitle}}</p>
-      <Input v-for="(input, i) in inputs" :label="input.label" :key="'label' + i" />
-      <Button :text="button.text" />
+      <Input
+        v-for="(input, i) in inputs"
+        :label="input.label"
+        :key="'label' + i"
+        @input="event => input.set(event)"
+        :rules="input.rules"
+        :mask="input.mask"
+        :money="input.money"
+        :prefix="input.prefix"
+      />
+      <Button :text="button.text" @click.native="button.submit" />
     </div>
   </div>
 </template>
@@ -52,6 +61,11 @@ export default {
   components: {
     Input,
     Button
+  },
+  methods: {
+    inputSaida(asd) {
+      console.log(asd);
+    }
   }
 };
 </script>
@@ -63,7 +77,7 @@ export default {
 }
 
 #request-card-form > div > h2 {
-  margin-top: 90px;
+  margin-top: 70px;
 }
 
 #request-card-form > div > p {
